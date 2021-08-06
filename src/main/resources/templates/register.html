@@ -7,6 +7,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+<div th:replace="base :: nav"></div>
 <div class="container">
     <form autocomplete="off" th:action="@{/processregister}" th:object="${user}" method="post">
         First name<br>  <input type="text" id="firstName" placeholder="First Name" th:field="*{firstName}"> <br>

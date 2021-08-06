@@ -17,16 +17,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/").permitAll()
+                .antMatchers("/details/**").permitAll()
+                .antMatchers("register").permitAll()
                 .antMatchers("/add").hasRole("USER")
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/login?logout=true").permitAll();
 
-        httpSecurity.csrf().ignoringAntMatchers("/h2-console/**");
-        httpSecurity.headers().frameOptions().sameOrigin();
 
     }
 
