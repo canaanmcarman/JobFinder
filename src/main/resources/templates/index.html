@@ -30,9 +30,10 @@
             <td>[[${job.author}]]</td>
             <td>[[${job.phone}]]</td>
 
-            <td><th scope="col"><a th:href="@{/update/{id}(id=${job.id})}"> <button type="button" class="btn btn-primary btn-text-dark">Update</button></a></th></td>
+
             <td><th scope="col"><a th:href="@{/details/{id}(id=${job.id})}"> <button type="button" class="btn btn-primary btn-text-dark">Details</button></a></th></td>
-            <td><th scope="col"><a th:href="@{/delete/{id}(id=${job.id})}"> <button type="button" class="btn btn-primary btn-text-dark">Delete</button></a></th></td>
+            <td><th scope="col"><a th:if="${job.author} == ${#authentication.name}" th:href="@{/update/{id}(id=${job.id})}"> <button type="button" class="btn btn-primary btn-text-dark">Update</button></a></th></td>
+            <td><th scope="col"><a th:if="${job.author} == ${#authentication.name}" th:href="@{/delete/{id}(id=${job.id})}"> <button type="button" class="btn btn-primary btn-text-dark">Delete</button></a></th></td>
 
         </tr>
 

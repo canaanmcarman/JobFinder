@@ -23,19 +23,21 @@ public class HomeController {
     ArrayList<Job> jobs = new ArrayList<>();
 
     @RequestMapping("/")
-    public String index(Model model) {
+    public String index(Model model, Principal principal) {
         model.addAttribute("jobs", jobs);
         return "index";
     }
 
     @GetMapping("/add")
-    public String add(Model model) {
+    public String add(Model model, Principal principal) {
+        String author = principal.getName();
         Job job = new Job();
+        job.setAuthor(author);
         setId(job);
         model.addAttribute("job", job);
         return "add";
     }
-    @PostMapping("processAddJob")
+    @PostMapping("/processAddJob")
     public String processAddJob(@Valid Job job, BindingResult result, Model model) {
         if (result.hasErrors()){
             return "add";

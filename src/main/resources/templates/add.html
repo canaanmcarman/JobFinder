@@ -15,14 +15,12 @@
 
 
         <input type="hidden" th:field="*{id}" >
+        <input type="hidden" th:field="*{author}">
         <div>
             Job Title<br> <input type="text" th:field="*{title}">
         </div>
         <div>
             Description<br> <textarea th:field="*{description}"></textarea>
-        </div>
-        <div>
-            Author<br> <input type="text" th:field="*{author}">
         </div>
         <div>
             Date<br> <input type="text" th:field="*{postedDate}">
