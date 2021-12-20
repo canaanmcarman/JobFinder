@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Controller
@@ -34,6 +35,8 @@ public class HomeController {
         Job job = new Job();
         job.setAuthor(author);
         setId(job);
+        LocalDate date = LocalDate.now();
+        job.setDate(date);
         model.addAttribute("job", job);
         return "add";
     }
@@ -48,7 +51,11 @@ public class HomeController {
                 j.setAuthor(job.getAuthor());
                 j.setDescription(job.getAuthor());
                 j.setPhone(job.getPhone());
-                j.setPostedDate(job.getPostedDate());
+                j.setDate(job.getDate());
+                j.setExpDescription(job.getExpDescription());
+                j.setCompany(job.getCompany());
+                j.setLocation(job.getLocation());
+
                 return "redirect:/";
             }
         }
@@ -63,7 +70,7 @@ public class HomeController {
         return "register";
     }
 
-    @PostMapping("processregister")
+    @PostMapping("/processregister")
     public String processRegPage(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             user.setPassword("");
@@ -77,7 +84,7 @@ public class HomeController {
             Role role = new Role(user.getUsername(), "ROLE_USER");
             roleRepository.save(role);
         }
-        return "index";
+        return "login";
     }
 
 

@@ -1,16 +1,30 @@
 package com.example.week5challenge_jobslist;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 public class Job {
     @Min(1)
     @NotNull
     private long id;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, pattern = "yyyy-MM-dd")
+    private LocalDate date;
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
     @NotNull
     @NotEmpty
@@ -20,9 +34,6 @@ public class Job {
     @NotEmpty
     private String description;
 
-    @NotNull
-    @NotEmpty
-    private String postedDate;
 
     @NotNull
     @NotEmpty
@@ -31,6 +42,45 @@ public class Job {
     @NotNull
     @NotEmpty
     private String phone;
+
+    @NotNull
+    @NotEmpty
+    private String expDescription;
+
+    @NotNull
+    @NotEmpty
+    private String location;
+
+    @NotNull
+    @NotEmpty
+    private String Company;
+
+    public String getExpDescription() {
+        return expDescription;
+    }
+
+    public void setExpDescription(String expDescription) {
+        this.expDescription = expDescription;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCompany() {
+        return Company;
+    }
+
+    public void setCompany(String company) {
+        Company = company;
+    }
+
+
+
 
 
     public Job() {
@@ -52,13 +102,7 @@ public class Job {
         this.description = description;
     }
 
-    public String getPostedDate() {
-        return postedDate;
-    }
 
-    public void setPostedDate(String postedDate) {
-        this.postedDate = postedDate;
-    }
 
     public String getAuthor() {
         return author;
@@ -83,6 +127,7 @@ public class Job {
     public void setId(long id) {
         this.id = id;
     }
+
 
 
 }
