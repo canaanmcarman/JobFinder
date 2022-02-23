@@ -5,6 +5,6 @@ Simple website for finding and posting new jobs. Has basic security options and 
 -Java <br>
 -HTML<br>
 -CSS <br>
--Bootstrap
+-Bootstrap <br>
 -Thymeleaf<br>
 -Java Spring Boot<br>
